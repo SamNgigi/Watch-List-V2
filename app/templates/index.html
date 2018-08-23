@@ -18,23 +18,17 @@
   <!-- Popular movie section -->
   <h3>Popular Movies</h3>
   <ul>
-    {% for pop in popular_movies %}
-    <li>{{pop.title}}</li>
-    {% endfor %}
+    {{macro.displayMovieList(popular_movies)}}
   </ul>
   <!-- Popular movie section -->
   <h3>Upcoming Movies</h3>
   <ul>
-    {% for upcoming in upcoming_movies %}
-    <li>{{upcoming.title}}</li>
-    {% endfor %}
+    {{macro.displayMovieList(upcoming_movies)}}
   </ul>
   <!-- Popular movie section -->
-  <h3>Popular Movies</h3>
+  <h3>Now showing Movies</h3>
   <ul>
-    {% for playing in now_playing %}
-    <li>{{playing.title}}</li>
-    {% endfor %}
+    {{macro.displayMovieList(now_playing)}}
   </ul>
 </body>
 
