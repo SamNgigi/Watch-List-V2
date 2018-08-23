@@ -2,7 +2,8 @@ class Config:
   """ 
   General parent configurations
   """
-  pass
+  # We add the movie db base url
+  MOVIE_DB_BASE_URL='https://api.themoviedb.org/3/movie/{}?api_key={}'
 
 class ProdConfig(Config):
   """ 

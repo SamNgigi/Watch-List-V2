@@ -5,6 +5,8 @@ template.
 from flask import render_template
 # Importing our app instance
 from app import app
+# Importing the get_movies function from request.py
+from .request import get_movies
 
 # Our views
 
@@ -16,7 +18,11 @@ def index():
     """
     title = 'Home | Watchlist'
     sup = 'Hello World!'
-    return render_template('index.html', sup=sup, title=title)
+    popular_movies= get_movies('popular')
+    upcoming_movies= get_movies('upcoming')
+    now_playing= get_movies('now_playing')
+    # print(popular_movies)
+    return render_template('index.html', sup=sup, title=title, popular_movies=popular_movies, upcoming_movies=upcoming_movies, now_playing=now_playing)
 
 # This is a dynamic url that takes in a specific id.
 @app.route('/user/<user_id>')
@@ -24,5 +30,6 @@ def movie(user_id):
     """  
     View function that returns the movie details page and its data.
     """
-    return render_template('movie.html', user_id=user_id)
+    title = f'Watchlist | M-{user_id}'
+    return render_template('movie.html', user_id=user_id, title=title)
 
