@@ -25,7 +25,7 @@ def index():
     return render_template('index.html', sup=sup, title=title, popular_movies=popular_movies, upcoming_movies=upcoming_movies, now_playing=now_playing)
 
 # This is a dynamic url that takes in a specific id.
-@app.route('/user/<user_id>')
+@app.route('/movie/<movie_id>')
 def movie(user_id):
     """  
     View function that returns the movie details page and its data.

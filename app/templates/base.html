@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Title -->
+  {% if title %}
+  <title>{{title}}</title>
+  {% else %}
+  <title>Welcome to the best Movie Review Website</title>
+  {% endif %}
+
+</head>
+
+<body>
+  <!-- Content block -->
+  {% block %} {% endblock %}
+</body>
+
+</html>

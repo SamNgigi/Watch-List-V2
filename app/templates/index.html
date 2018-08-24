@@ -1,35 +1,18 @@
-{% import 'macros.html' as macro %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %} {% import 'macros.html' as macro %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
-  <title>{{title}}</title>
-  {% else %}
-  <title>Welcome to the best Movie Review Website</title>
-  {% endif %}
-
-</head>
-
-<body>
-  <h1>{{sup}}</h1>
-  <!-- Popular movie section -->
-  <h3>Popular Movies</h3>
-  <ul>
-    {{macro.displayMovieList(popular_movies)}}
-  </ul>
-  <!-- Popular movie section -->
-  <h3>Upcoming Movies</h3>
-  <ul>
-    {{macro.displayMovieList(upcoming_movies)}}
-  </ul>
-  <!-- Popular movie section -->
-  <h3>Now showing Movies</h3>
-  <ul>
-    {{macro.displayMovieList(now_playing)}}
-  </ul>
-</body>
-
-</html>
+<h1>{{sup}}</h1>
+<!-- Popular movie section -->
+<h3>Popular Movies</h3>
+<ul>
+  {{macro.displayMovieList(popular_movies)}}
+</ul>
+<!-- Popular movie section -->
+<h3>Upcoming Movies</h3>
+<ul>
+  {{macro.displayMovieList(upcoming_movies)}}
+</ul>
+<!-- Popular movie section -->
+<h3>Now showing Movies</h3>
+<ul>
+  {{macro.displayMovieList(now_playing)}}
+</ul>
