@@ -1,4 +1,12 @@
 {% extends "base.html" %} {% import 'macros.html' as macro %}
+<!-- Styles -->
+{% block styles %}
+<!-- 
+  The super() method tell Jinja not to override any code writtern in
+  this block.
+-->
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='Css/index.css')}}"> {% endblock %}
 <!-- Adding content -->
 {% block content %}
 <h1>{{sup}}</h1>

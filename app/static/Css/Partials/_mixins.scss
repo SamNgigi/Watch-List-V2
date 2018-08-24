@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Lobster|Montserrat|Raleway');
+@mixin base {
+  html {
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    font-family: 'Quicksand', sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 5px 0;
+    font-family: "Raleway", sans-serif;
+  }
+}
+
+@mixin container {
+  .container {
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    max-width: 960px;
+    padding: 5px 10px;
+    background-color: $isabelline;
+  }
+}
