@@ -35,6 +35,8 @@
 {% endblock %}
 <!-- Scripts -->
 {% block scripts %}
+<!-- Prevents us from overriding bootstrap js -->
+{{super()}}
 <script src="{{url_for('static', filename='Js/app.js')}}">
 </script>
 {% endblock %}

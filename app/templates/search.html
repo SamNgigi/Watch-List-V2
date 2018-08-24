@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% import "macros.html" as macro %} {% block content %}
+<div class="container text-center">
+  <h3>Found {{found_movies|count}} matches</h3>
+  <hr>
+  <div class="row">
+    <!-- Had interpolated the wrong variable -->
+    {{macro.displayMovieList(found_movies)}}
+  </div>
+</div>
+{% endblock %}
