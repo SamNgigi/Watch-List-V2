@@ -40,12 +40,12 @@ def get_movie(id):
     movie_object = None
 
     if movie_details_response:
-      id = movie_detail_response.get('id')
-      title = movie_detail_response.get('originalposter_title')
-      overview = movie_detail_response.get('overview')
-      poster = movie_detail_response.get('poster_path')
-      vote_average = movie_detail_response.get('vote_average')
-      vote_count = movie_detail_response.get('vote_count')
+      id = movie_details_response.get('id')
+      title = movie_details_response.get('originalposter_title')
+      overview = movie_details_response.get('overview')
+      poster = movie_details_response.get('poster_path')
+      vote_average = movie_details_response.get('vote_average')
+      vote_count = movie_details_response.get('vote_count')
       
       movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
 
