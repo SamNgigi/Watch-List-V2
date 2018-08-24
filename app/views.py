@@ -26,10 +26,10 @@ def index():
 
 # This is a dynamic url that takes in a specific id.
 @app.route('/movie/<movie_id>')
-def movie(user_id):
+def movie(movie_id):
     """  
     View function that returns the movie details page and its data.
     """
-    title = f'Watchlist | M-{user_id}'
-    return render_template('movie.html', user_id=user_id, title=title)
+    title = f'Watchlist | M-{movie_id}'
+    return render_template('movie.html', movie_id=movie_id, title=title)
 

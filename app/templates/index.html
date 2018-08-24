@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% import 'macros.html' as macro %}
-
+<!-- Adding content -->
+{% block content %}
 <h1>{{sup}}</h1>
 <!-- Popular movie section -->
 <h3>Popular Movies</h3>
@@ -16,3 +17,4 @@
 <ul>
   {{macro.displayMovieList(now_playing)}}
 </ul>
+{% endblock %}
