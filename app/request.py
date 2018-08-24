@@ -9,6 +9,8 @@ api_key = app.config['MOVIE_DB_KEY']
 # Getting the movie base url
 base_url = app.config['MOVIE_DB_BASE_URL']
 
+search_url = app.config['MOVIE_DB_SEARCH_URL']
+
 
 # Getting data from the Movie db api
 def get_movies(category):
@@ -50,6 +52,27 @@ def get_movie(id):
       movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
 
     return movie_object
+
+# Returns response from search
+def search_movie(movie_query):
+  """  
+  Function that returns a response from a given movie query.
+  """
+  search_movie_url = search_url.format(api_key, movie_query)
+
+  with urllib.request.urlopen(search_movie_url) as url:
+    search_movie_data = url.read()
+    search_movie_response = json.loads(search_movie_data)
+
+    search_movie_results = None
+
+    if search_movie_response['results']:
+      search_movie_list = search_movie_response['results']
+      search_movie_results = process_results(search_movie_list)
+
+  return search_movie_results
+
+  
 
 # Process the response from the api call
 def process_results(movie_list):

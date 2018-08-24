@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
+# Make sure you add that . before config
 from .config import DevConfig
 
 # Initializing application. Creating our app instance.
@@ -21,3 +22,5 @@ bootstrap = Bootstrap(app)
 
 # This allows us to define our views on a separate file.
 from app import views
+# Importing our 404 view function. 
+from app import error

@@ -2,14 +2,18 @@
 <!-- Styles -->
 {% block styles %}
 <!-- 
-  The super() method tell Jinja not to override any code writtern in
+  The super() method tell Jinja not to override any code written in
   this block.
 -->
 {{super()}}
 <link rel="stylesheet" href="{{url_for('static', filename='Css/index.css')}}"> {% endblock %}
 <!-- Adding content -->
 {% block content %}
-<h1>{{sup}}</h1>
+<h1>{{sup}}!
+  <span>
+    <button class="btn btn-primary">Test</button>
+  </span>
+</h1>
 <!-- Popular movie section -->
 <h3>Popular Movies</h3>
 <div class="row">
@@ -28,4 +32,9 @@
   {{macro.displayMovieList(now_playing)}}
 </div>
 
+{% endblock %}
+<!-- Scripts -->
+{% block scripts %}
+<script src="{{url_for('static', filename='Js/app.js')}}">
+</script>
 {% endblock %}
