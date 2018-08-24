@@ -2,4 +2,18 @@
 <!-- Content block -->
 {% block content %}
 <h2>Hello World to you {{movie_id}}</h2>
+<div class="container">
+  <!-- Poster background -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 posterPath" style="background:url({{movie.poster}})"></div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 movie-detail">
+      <h3>{{movie.title}}</h3>
+      <p class="overview">{{movie.overview}}</p>
+      <p class="rating">
+        <b>{{movie.movie_average}}</b> -
+        <i>{{movie.vote}} votes</i>
+      </p>
+    </div>
+  </div>
+</div>
 {% endblock %}

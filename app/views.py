@@ -6,14 +6,14 @@ from flask import render_template
 # Importing our app instance
 from app import app
 # Importing the get_movies function from request.py
-from .request import get_movies
+from .request import get_movies, get_movie
 
 # Our views
 
 
 @app.route('/')
 def index():
-    """  
+    """
     View function that returns the index page and its data.
     """
     title = 'Home | Watchlist'
@@ -31,5 +31,6 @@ def movie(movie_id):
     View function that returns the movie details page and its data.
     """
     title = f'Watchlist | M-{movie_id}'
-    return render_template('movie.html', movie_id=movie_id, title=title)
+    movie = get_movie(movie_id)
+    return render_template('movie.html', movie_id=movie_id, title=title, movie=movie)
 

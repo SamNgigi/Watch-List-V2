@@ -4,17 +4,20 @@
 <h1>{{sup}}</h1>
 <!-- Popular movie section -->
 <h3>Popular Movies</h3>
-<ul>
+<div class="row">
   {{macro.displayMovieList(popular_movies)}}
-</ul>
+</div>
+
 <!-- Popular movie section -->
 <h3>Upcoming Movies</h3>
-<ul>
+<div class="row">
   {{macro.displayMovieList(upcoming_movies)}}
-</ul>
+</div>
+
 <!-- Popular movie section -->
 <h3>Now showing Movies</h3>
-<ul>
+<div class="row">
   {{macro.displayMovieList(now_playing)}}
-</ul>
+</div>
+
 {% endblock %}
