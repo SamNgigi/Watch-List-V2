@@ -13,13 +13,16 @@ class ReviewTest(unittest.TestCase):
     self.new_review = Review(1, 'Python is awesome', 'https://image.tmdb.org/t/p/w500/khsjha27hbs', 'A whole new World')
 
   def test_instance(self):
-    self.assertTrue(isinstance(self.new_review, Movie))
+    self.assertTrue(isinstance(self.new_review, Review))
 
   def test_init(self):
     self.assertEqual(self.new_review.movie_id, 1)
     self.assertEqual(self.new_review.title, 'Python is awesome')
     self.assertEqual(self.new_review.imageurl, 'https://image.tmdb.org/t/p/w500/khsjha27hbs')
     self.assertEqual(self.new_review.review, 'A whole new World')
+
+  def tearDown(self):
+    Review.all_reviews = []
 
   def test_save_review(self):
     self.new_review.save_reviews()
@@ -32,7 +35,7 @@ class ReviewTest(unittest.TestCase):
 
   def test_get_reviews(self):
     self.new_review.save_reviews()
-    self.assertEqual(len(Contact.get_reviews(self.new_review.id)),1)
+    self.assertEqual(len(Review.get_reviews(self.new_review.movie_id)),1)
 
-if __name__ == '__main__':
-  unittest.main()
+# if __name__ == '__main__':
+#   unittest.main()

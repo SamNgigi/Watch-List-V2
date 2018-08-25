@@ -10,10 +10,10 @@ class MovieTest(unittest.TestCase):
     """ 
     Set up method that will run before every Test.
     """
-    self.new_movie = Movie(1, 'Python is awesome', 'A whole new World', 'https://image.tmdb.org/t/p/w500/khsjha27hbs, 9, 777)
+    self.new_movie = Movie(1, 'Python is awesome', 'A whole new World', 'khsjha27hbs', 9, 777)
 
   def test_instance(self):
-    self.assertTrue(isinstance(self.newMovie, Movie))
+    self.assertTrue(isinstance(self.new_movie, Movie))
 
   def test_init(self):
     self.assertEqual(self.new_movie.id, 1)
@@ -21,7 +21,9 @@ class MovieTest(unittest.TestCase):
     self.assertEqual(self.new_movie.overview, 'A whole new World')
     self.assertEqual(self.new_movie.poster, 'https://image.tmdb.org/t/p/w500/khsjha27hbs')
     self.assertEqual(self.new_movie.vote_average, 9)
-    self.assertEqual(self.new_movie.count, 777)
+    self.assertEqual(self.new_movie.vote_count, 777)
 
-if __name__ == '__main__':
-  unittest.main()
+  
+
+# if __name__ == '__main__':
+#   unittest.main()

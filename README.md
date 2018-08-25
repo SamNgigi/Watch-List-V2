@@ -16,3 +16,7 @@ Tell class to expect a lot of errors.
 To read the error carefully first to understand it. Try to figure it
 
 out, google then try a couple of solutions before asking for help
+
+## Tests
+
+The tests have to be named 'test_movie.py' and not 'movie_test'. I think the naming convention is already predefined
