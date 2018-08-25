@@ -1,15 +1,29 @@
-from app import app
+# from app import app
 import urllib.request, json
-from .models import movie
+from .models import Movie
 
-Movie = movie.Movie
+# Movie = movie.Movie
 
-# Getting api key
-api_key = app.config['MOVIE_DB_KEY']
-# Getting the movie base url
-base_url = app.config['MOVIE_DB_BASE_URL']
+# Instanciting api_key
+api_key = None
 
-search_url = app.config['MOVIE_DB_SEARCH_URL']
+# Instanciting movie base url
+base_url = None
+
+# Instanciting search url
+search_url = None
+
+def configure_request(app):
+  global api_key, base_url, search_url
+  
+  # Getting api key
+  api_key = app.config['MOVIE_DB_KEY']
+  # Getting the movie base url
+  base_url = app.config['MOVIE_DB_BASE_URL']
+  # Getting the search url
+  search_url = app.config['MOVIE_DB_SEARCH_URL']
+
+
 
 
 # Getting data from the Movie db api

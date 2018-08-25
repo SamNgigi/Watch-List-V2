@@ -1,14 +1,26 @@
+"""  
+Importing os allows our application to interact with the operating
+system dependant functionality.
+"""
+import os
+
 class Config:
   """ 
   General parent configurations
-  """
-  # We add the movie db base url
-  """  
-  This url is neat because it allows us to both pass a category to
+
+  The base url is neat because it allows us to both pass a category to
   fetch multiple movies and an id to return just on movie.
   """
+
   MOVIE_DB_BASE_URL='https://api.themoviedb.org/3/movie/{}?api_key={}'
   MOVIE_DB_SEARCH_URL='https://api.themoviedb.org/3/search/movie?api_key={}&query={}'
+
+  # We add our movie api key
+  MOVIE_DB_KEY = os.environ.get('MOVIE_DB_KEY')
+
+  # We add the secret key
+  SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 class ProdConfig(Config):
   """ 
@@ -27,4 +39,14 @@ class DevConfig(Config):
     We inherit the general configurations from Config  
   """
   DEBUG= True
+
+
+"""  
+Config option dictionary helps us access different configuration
+option classes.
+"""
+config_options = {
+  'development': DevConfig,
+  'production': ProdConfig
+}
 

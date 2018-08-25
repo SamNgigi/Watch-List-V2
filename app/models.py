@@ -1,6 +1,18 @@
+class Movie:
+  """  
+  Movie class to define movie objects
+  """
+
+  def __init__(self, id, title, overview, poster, vote_average, vote_count):
+    self.id = id
+    self.title = title
+    self.overview = overview
+    self.poster = "https://image.tmdb.org/t/p/w500" + poster
+    self.vote_average = vote_average
+    self.vote_count = vote_count
+
 class Review:
 
-  # List to store all our reviews for now
   all_reviews = []
 
   def __init__(self, movie_id, title, imageurl, review):
@@ -10,16 +22,11 @@ class Review:
     self.review = review
 
   def save_review(self):
-    """  
-    Saves reviews
-    """
     Review.all_reviews.append(self)
 
   @classmethod
   def get_reviews(cls, id):
-    """  
-    Function that returns all the reviews for a specific movie.
-    """
+
     response = []
 
     for review in cls.all_reviews:
@@ -29,8 +36,5 @@ class Review:
     return response
 
   @classmethod
-  def clear_reviews(cls):
-    """  
-    Function that removes all reviews from all_reviews
-    """
+  def clear_review(cls):
     Review.all_reviews.clear()

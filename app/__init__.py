@@ -1,26 +1,43 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-# Make sure you add that . before config
-from .config import DevConfig
+# Importing our configurations dictionary.
+from config import config_options
+# Instanciating the Bootstrap instance
+bootstrap = Bootstrap()
+  
+def create_app(config_name):
+  """  
+  Function that instantiates our flask app and allows us to pass in a
+  configuration option.
 
-# Initializing application. Creating our app instance.
-app = Flask(__name__, instance_relative_config = True)
+  It also initialize flask extensions on our application.
+  """
 
-"""  
-Configurations
-"""
-# Setting up our configurations. We pass in the DevConfig subclass.
-app.config.from_object(DevConfig)
-# We also add configuration to our config with api keys
-app.config.from_pyfile('config.py')
+  app = Flask(__name__)
 
-"""  
-Initializing flask extensions
-"""
-# Initializing Bootstrap in our app.
-bootstrap = Bootstrap(app)
+  # Creating the app configurations
+  # We replace app.config.from_pyfile("config.py") with this.
+  app.config.from_object(config_options[config_name])
 
-# This allows us to define our views on a separate file.
-from app import views
-# Importing our 404 view function. 
-from app import error
+  """  
+  Initializing flask extensions.
+  We call the init_app() on an extension to complete their
+  initialization.
+
+  So we are basically kind of saying add bootstrap on app
+  initialization.
+  """
+  bootstrap.init_app(app)
+
+  # NOTE We will add the views and forms by adding our blueprint
+  # Importing our blueprint
+  from .main import main as main_blueprint
+  # Registering our blueprint
+  app.register_blueprint(main_blueprint)
+
+  # Setting config
+  from .request import configure_request
+  configure_request(app)
+
+
+  return app
