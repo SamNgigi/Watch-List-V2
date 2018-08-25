@@ -51,7 +51,8 @@ def movie(movie_id):
     """
     title = f'Watchlist | M-{movie_id}'
     movie = get_movie(movie_id)
-    return render_template('movie.html', movie_id=movie_id, title=title, movie=movie)
+    reviews = Review.get_reviews(movie.id)
+    return render_template('movie.html', movie_id=movie_id, title=title, movie=movie, reviews=reviews)
 
 # We add a dynamic route that takes in a movie term
 @app.route('/search/<movie_query>')
@@ -89,11 +90,11 @@ def new_review(id):
     movie = get_movie(id)
 
     if review_form.validate_on_submit():
-        title = form.title.data
-        review = form.review.data
+        title = review_form.title.data
+        review = review_form.review.data
         new_review = Review(movie.id, title, movie.poster, review)
         new_review.save_review()
-        return redirect(url_for('movie', id = movie.id))
+        return redirect(url_for('movie', movie_id = movie.id))
 
     title = f'{movie.title} review'
     return render_template('new_review.html', title=title, review_form=review_form, movie=movie)
