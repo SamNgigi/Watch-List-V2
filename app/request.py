@@ -43,7 +43,7 @@ def get_movie(id):
 
     if movie_details_response:
       id = movie_details_response.get('id')
-      title = movie_details_response.get('originalposter_title')
+      title = movie_details_response.get('original_title')
       overview = movie_details_response.get('overview')
       poster = movie_details_response.get('poster_path')
       vote_average = movie_details_response.get('vote_average')

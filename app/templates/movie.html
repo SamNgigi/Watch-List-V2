@@ -12,8 +12,10 @@
       <h3>{{movie.title}}</h3>
       <p class="overview">{{movie.overview}}</p>
       <p class="rating">
-        <b>{{movie.movie_average}}</b> -
-        <i>{{movie.vote}} votes</i>
+        <b>{{movie.vote_average}}</b> -
+        <i>{{movie.vote_count}} votes</i>
+        <br>
+        <a href="/movie/review/new/{{movie.id}}" class="ratings">Write a new review</a>
       </p>
     </div>
   </div>

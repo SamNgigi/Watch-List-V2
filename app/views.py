@@ -12,6 +12,10 @@ from flask import render_template, request, redirect, url_for
 from app import app
 # Importing the get_movies function from request.py
 from .request import get_movies, get_movie, search_movie
+# Importing the Review class definition
+from .models import reviews
+from .forms import ReviewForm
+Review = reviews.Review
 
 # Our views
 
@@ -63,3 +67,33 @@ def search(movie_query):
 
     return render_template('search.html', found_movies=found_movies, title=title)
 
+@app.route('/movie/review/new/<int:id>', methods = ['GET', 'POST'])
+def new_review(id):
+    """  
+    This function is responsible for rendering the new_review html
+    and its data.
+
+    In the route decorator we specify that this view function will be
+    both making http GET and POST request.
+
+    GET movie, POST review.
+
+    Args:
+        id. It takes in an id for the specific movie we want to
+        review. We then return that movie using the get_movie()
+
+    validate_on_submit() returns True when the form is submitted and
+    all the data has been verified by our validators in forms.py
+    """
+    review_form = ReviewForm()
+    movie = get_movie(id)
+
+    if review_form.validate_on_submit():
+        title = form.title.data
+        review = form.review.data
+        new_review = Review(movie.id, title, movie.poster, review)
+        new_review.save_review()
+        return redirect(url_for('movie', id = movie.id))
+
+    title = f'{movie.title} review'
+    return render_template('new_review.html', title=title, review_form=review_form, movie=movie)
