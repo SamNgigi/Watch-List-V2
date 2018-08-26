@@ -1,9 +1,9 @@
 from flask import Flask
+from config import config_options
 from flask_bootstrap import Bootstrap
 # Importing our configurations dictionary.
-from config import config_options
 # Instanciating the Bootstrap instance
-bootstrap = Bootstrap()
+# bootstrap = Bootstrap()
   
 def create_app(config_name):
   """  
@@ -27,11 +27,12 @@ def create_app(config_name):
   So we are basically kind of saying add bootstrap on app
   initialization.
   """
-  bootstrap.init_app(app)
+  # bootstrap.init_app(app)
+  Bootstrap(app)
 
   # NOTE We will add the views and forms by adding our blueprint
   # Importing our blueprint
-  from .main import main as main_blueprint
+  from app.main import main as main_blueprint
   # Registering our blueprint
   app.register_blueprint(main_blueprint)
 
