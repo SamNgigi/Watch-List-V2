@@ -16,3 +16,23 @@ Tell class to expect a lot of errors.
 To read the error carefully first to understand it. Try to figure it
 
 out, google then try a couple of solutions before asking for help
+
+## ModuleNotFoundError
+
+First check if you installed the module.
+
+If you have made sure that you have installed the module properly and you are still getting this error, try uninstalling the module then re-installing it again.
+
+If the problem persists you may have to remove the virtual folder. Make sure you are on the root directory.
+
+1. Deactivate your virtual environment
+
+2. rm -rf virtual environment
+
+3. Create you virtual environment again.
+
+4. Reinstall the dependencies using your requirements.txt.
+
+Sometimes if the problem persists you may have to repeat this process and install the dependencies one by one.
+
+Sometimes check your version of python. Try python 3.6.6 if the problem still occurs. Then repeat the above steps.
