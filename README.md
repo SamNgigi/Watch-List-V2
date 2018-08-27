@@ -19,7 +19,9 @@ out, google then try a couple of solutions before asking for help
 
 ## ModuleNotFoundError
 
-First check if you installed the module.
+First check if you are in your virtual environment.
+
+Then check if you have installed the module.
 
 If you have made sure that you have installed the module properly and you are still getting this error, try uninstalling the module then re-installing it again.
 
