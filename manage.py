@@ -4,7 +4,18 @@ from app import create_app, db
 # We import the User class, Role class
 from app.models import User, Role
 from flask_script import Manager, Server
-# We add flask_migrate that will allow us to update the schema
+""" 
+Using flask-migrate we are able to use alembic. 
+
+This is a tool that automatically create and tracks DATABASE
+MIGRATIONS from changes to our SQL models.
+
+DATABASE MIGRATIONS are records of all the changes of our database
+schema.
+
+Alembic allows us to upgrade or downgrade our database to saved
+versions
+"""
 from flask_migrate import Migrate, MigrateCommand
 
 # Instanciating our app through our create app function.
