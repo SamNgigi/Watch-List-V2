@@ -1,6 +1,7 @@
 {
   "python.pythonPath": "${workspaceFolder}/virtual/bin/python",
   "cSpell.words": [
-    "Watchlist"
+    "Watchlist",
+    "thisisatest"
   ]
 }

@@ -1,3 +1,9 @@
+from werkzeug.security import (
+  # Method that takes in a password hash and returns a hash of it
+  generate_password_hash,
+  # Method compares two hashes
+  check_password_hash
+)
 from . import db
 
 class Movie:
@@ -55,13 +61,43 @@ class User(db.Model):
   first argument.
   """
   __tablename__ = 'users'
-  
+
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(255))
   role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+  password_hash = db.Column(db.String(255))
 
   def __repr__(self):
     return f'User {self.username}'
+
+  @property
+  def password(self):
+    """  
+    We use the @decorator to create a write only class property
+    password.
+
+    Note that used on the password entered into a form in the views.
+
+    We block access to the password property raising an Attribute
+    error because it is not secure for Users to have access to that
+    property.
+    """
+    raise AttributeError('You cannot read the password attribute')
+
+  """  
+  When we set this property (password) we generate a password hash and pass the hashed password as a value to the password_hash column property to save to the database.
+  """
+  @password.setter
+  def password(self, password):
+    self.password_hash = generate_password_hash(password)
+
+
+  def verify_password(self, password):
+    """  
+    This function takes in our password hashes it then compares it to
+    the hashed one we had stored in our database.
+    """
+    return check_password_hash(self.password_hash, password)
 
 
 class Role(db.Model):
