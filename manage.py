@@ -17,6 +17,13 @@ manager.add_command('server', Server)
 migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
+@manager.command
+def test():
+  """ Running unit tests """
+  import unittest
+  test = unittest.TestLoader().discover("tests")
+  unittest.TextTestRunner(verbosity=2).run(tests)
+
 """ 
 We use the @manage.shell decorator to create a shell context and the
 make_shell_context function allows us to pass in some properties into

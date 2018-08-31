@@ -4,7 +4,24 @@ from werkzeug.security import (
   # Method compares two hashes
   check_password_hash
 )
+"""  
+UserMixin allows our user model to inherit the following methods
+
+is_authenticated() - Returns a boolean if User is authenticated or na
+
+is_active() - Check if a use is in an active session.
+
+is_anonymous() - Returns boolean if User is anonymous.
+
+get_id() - Returns a unique identifier for User
+"""
+from flask_login import UserMixin
+from . import login_manager
 from . import db
+
+@login_manager.user_loader
+def load_user(user_id):
+  return User.query.get(int(user_id))
 
 class Movie:
   """  
@@ -48,7 +65,7 @@ class Review:
     Review.all_reviews.clear()
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
   """  
   User class that defines and helps us create a new user.
 
@@ -63,12 +80,10 @@ class User(db.Model):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
-  username = db.Column(db.String(255))
-  role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+  username = db.Column(db.String(255), index=True)
+  email = db.Column(db.String(255), unique=True, index=True)
+  # role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
   password_hash = db.Column(db.String(255))
-
-  def __repr__(self):
-    return f'User {self.username}'
 
   @property
   def password(self):
@@ -99,6 +114,9 @@ class User(db.Model):
     """
     return check_password_hash(self.password_hash, password)
 
+  def __repr__(self):
+    return f'User {self.username}'
+
 
 class Role(db.Model):
 
@@ -109,7 +127,7 @@ class Role(db.Model):
   """  
   The relationship defined here allows us to to reference a user role
   """
-  users = db.relationship('User', backref = 'role', lazy = 'dynamic')
+  # users = db.relationship('User', backref = 'role', lazy = 'dynamic')
 
   def __repr__(self):
     return f'User {self.role_name}'

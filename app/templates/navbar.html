@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Watchlist</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -16,8 +16,8 @@
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Knock Knock
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,5 +37,17 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search movie" aria-label="Search" name="movie_query">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+      <li>{{current_user.username}}</li>
+      <li>
+        <a href="{{url_for('auth.logout')}}">Sign Out</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{{url_for('auth.login')}}">Sign In</a>
+      </li>
+      {% endif %}
+    </ul>
   </div>
 </nav>

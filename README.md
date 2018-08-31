@@ -48,3 +48,6 @@ Remember to notify the students that manager.py is now manage.py.
 ## CRUD using SQLAlchemy
 
 Notify John to tell students to db.create_all() when the create test users.
+
+
+Remind students of what # ... means. It means some code is here

@@ -18,6 +18,9 @@ from . import main
 from .forms import ReviewForm
 from ..models import Review
 
+# Adding login required functionality
+from flask_login import login_required
+
 # Our views
 
 
@@ -70,6 +73,8 @@ def search(movie_query):
     return render_template('search.html', found_movies=found_movies, title=title)
 
 @main.route('/movie/review/new/<int:id>', methods = ['GET', 'POST'])
+# This restricts access to this view to authenticated users only.
+@login_required 
 def new_review(id):
     """  
     This function is responsible for rendering the new_review html
