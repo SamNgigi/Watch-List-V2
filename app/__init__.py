@@ -1,9 +1,12 @@
 from flask import Flask
 from config import config_options
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 # Importing our configurations dictionary.
 # Instanciating the Bootstrap instance
-# bootstrap = Bootstrap()
+bootstrap = Bootstrap()
+# Instanciating our SQLAlchemy instance
+db = SQLAlchemy()
   
 def create_app(config_name):
   """  
@@ -27,8 +30,11 @@ def create_app(config_name):
   So we are basically kind of saying add bootstrap on app
   initialization.
   """
-  # bootstrap.init_app(app)
-  Bootstrap(app)
+  bootstrap.init_app(app)
+  # Bootstrap(app)
+
+  # Initializing our app as a SQLAlchemy instance.
+  db.init_app(app)
 
   # NOTE We will add the views and forms by adding our blueprint
   # Importing our blueprint

@@ -38,3 +38,13 @@ If the problem persists you may have to remove the virtual folder. Make sure you
 Sometimes if the problem persists you may have to repeat this process and install the dependencies one by one.
 
 Sometimes check your version of python. Try python 3.6.6 if the problem still occurs. Then repeat the above steps.
+
+## Creating User models
+
+"If not use SQLAlchemy will assume that the tablename is the lowercase of the class"
+
+Remember to notify the students that manager.py is now manage.py.
+
+## CRUD using SQLAlchemy
+
+Notify John to tell students to db.create_all() when the create test users.

@@ -21,6 +21,17 @@ class Config:
   # We add the secret key
   SECRET_KEY = os.environ.get('SECRET_KEY')
 
+  """  
+  We add this line to remove the SQLAlchemy notifications every time
+  we launch our app
+  """
+  SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+  """  
+  Adding our connection with Postgres data base via our SQLAlchemy ORM
+  """
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:Sam@localhost/watchlist'
+
 
 class ProdConfig(Config):
   """ 
