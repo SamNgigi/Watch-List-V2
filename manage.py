@@ -4,11 +4,18 @@ from app import create_app, db
 # We import the User class, Role class
 from app.models import User, Role
 from flask_script import Manager, Server
+# We add flask_migrate that will allow us to update the schema
+from flask_migrate import Migrate, MigrateCommand
 
+# Instanciating our app through our create app function.
 app = create_app('development')
 
+# Instanciating serving functionality
 manager = Manager(app)
 manager.add_command('server', Server)
+# Instanciating db migration functionality.
+migrate = Migrate(app, db)
+manager.add_command('db', MigrateCommand)
 
 """ 
 We use the @manage.shell decorator to create a shell context and the
